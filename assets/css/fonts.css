@@ -1,0 +1,7 @@
+/* =========================================================
+   NAMA — Fonts
+   Noto Kufi Arabic  -> used for headings (--f-head)
+   IBM Plex Sans Arabic -> used for body text (--f-body)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
