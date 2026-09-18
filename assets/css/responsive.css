@@ -2,8 +2,17 @@
    NAMA — ORBITAL CORE THEME : Responsive rules
    ========================================================= */
 
+/* منع أي تمرير أفقي على مستوى الصفحة كلها، مهما كان حجم الشاشة */
+html, body { max-width: 100%; overflow-x: hidden; }
+
 @media (pointer: coarse) {
     .cursor-dot, .cursor-ring { display: none; }
+}
+
+/* ---------- شاشات عريضة جداً (فوق 1400px) : راحة أكبر للعين، بدون تمدد المحتوى ---------- */
+@media (min-width: 1400px) {
+    .container { max-width: 1240px; }
+    .hero-brand-art { width: min(46vw, 700px); height: min(46vw, 700px); }
 }
 
 @media (max-width: 1020px) {
@@ -49,10 +58,15 @@
 
 @media (max-width: 900px) {
     .about-grid { grid-template-columns: 1fr; }
+    /* الخط الزمني ينتقل تحت النص على التابلت، بدون خط عمودي طويل زائد */
+    .timeline { border-right: none; padding-right: 0; margin-top: 40px; }
+    .timeline::before { content: none; }
 }
 
 @media (max-width: 900px) {
     .contact-grid { grid-template-columns: 1fr; }
+    .contact-info { text-align: center; }
+    .c-row { text-align: right; }
 }
 
 @media (max-width: 760px) {
@@ -79,6 +93,108 @@
     .hstat .num { font-size: 1.4rem; }
 }
 
+/* ---------- هواتف صغيرة ومتوسطة (حتى 480px) ---------- */
+@media (max-width: 480px) {
+    .container { padding: 0 18px; }
+
+    /* الهيدر: تصغير الشعار والنص الفرعي حتى لا يزاحم زر القائمة */
+    nav .container { height: 68px; }
+    .brand img { width: 36px; }
+    .brand .b-name { font-size: 1.05rem; }
+    .brand .b-sub { display: none; }
+
+    #mobileMenu a { font-size: 1.3rem; }
+    #mobileMenu img { width: 64px; }
+
+    /* الهيرو */
+    .hero .container { padding-top: 100px; padding-bottom: 40px; }
+    .hero-badge { font-size: .76rem; padding: 7px 14px; margin-bottom: 18px; }
+    .hero h1 { font-size: clamp(2rem, 9vw, 2.6rem); margin-bottom: 16px; }
+    .hero p.lead { font-size: 1rem; max-width: 34ch; }
+    .hero .slogan { font-size: .85rem; margin-bottom: 26px; }
+
+    .cta-row { flex-direction: column; width: 100%; gap: 12px; }
+    .cta-row .btn { width: 100%; justify-content: center; padding: 14px 22px; }
+
+    .hero-stats { margin-top: 34px; flex-wrap: wrap; row-gap: 18px; }
+    .hstat { flex: 1 1 45%; padding-top: 14px; }
+    .hstat:nth-child(2) { border-right: none; }
+    .hstat .num { font-size: 1.25rem; }
+    .hstat .lbl { font-size: .74rem; }
+
+    .marquee span { font-size: .9rem; padding: 0 16px; }
+
+    /* الأقسام عامة */
+    .sec { padding: 80px 0; }
+    .sec-head { margin-bottom: 48px; }
+    .sec-head h2 { font-size: clamp(1.5rem, 7vw, 2rem); }
+    .sec-tag { font-size: .8rem; }
+
+    .about-grid .big { font-size: 1.08rem; }
+    .about-quote { padding: 18px 20px; font-size: .95rem; }
+    .expertise { gap: 8px; }
+    .chip { padding: 7px 14px; font-size: .78rem; }
+
+    .vm-card { padding: 32px 24px; }
+    .vm-card h3 { font-size: 1.18rem; }
+
+    .svc-head { padding: 22px 6px; gap: 12px; }
+    .svc-title { font-size: 1.05rem; gap: 8px; }
+    .svc-tagline { font-size: .78rem; width: 100%; }
+    .svc-plus { width: 34px; height: 34px; }
+    .svc-body-in { padding: 0 6px 26px; gap: 10px; }
+    .svc-points span { font-size: .76rem; padding: 5px 12px; }
+
+    .why-card { padding: 28px 22px; }
+
+    /* منهجية العمل: تقليل الإزاحة اليمنى حتى لا تلامس حافة الشاشة */
+    .method-wrap { padding-right: 30px; }
+    .method-line { right: 7px; }
+    .mstep::before { right: -27px; width: 13px; height: 13px; }
+    .mstep h3 { font-size: 1.08rem; }
+    .mstep p { font-size: .88rem; }
+    .method-goal { padding: 20px; font-size: .92rem; }
+
+    .sector { padding: 13px 18px; font-size: .85rem; gap: 9px; }
+    .sector svg { width: 18px; height: 18px; }
+
+    .team-card { padding: 30px 20px; }
+    .team-avatar { width: 92px; height: 92px; font-size: 2rem; }
+    .team-card h3 { font-size: 1.3rem; }
+
+    .contact-card { padding: 34px 22px; }
+    .contact-card .tag { font-size: 1.25rem; }
+    .c-ico { width: 42px; height: 42px; }
+    .c-row span, .c-row a { font-size: .92rem; }
+
+    footer .container { flex-direction: column; text-align: center; gap: 14px; }
+}
+
+/* ---------- هواتف صغيرة جداً (حتى 380px) ---------- */
+@media (max-width: 380px) {
+    .hero h1 { font-size: 1.9rem; }
+    .hero-stats { flex-direction: column; }
+    .hstat { flex: 1 1 100%; }
+    .hstat + .hstat { border-right: none; border-top: 1px solid var(--line-soft); }
+    .hstat::before { display: none; }
+
+    .sectors { gap: 10px; }
+    .sector { width: 100%; justify-content: center; }
+
+    .c-actions { gap: 10px; }
+}
+
+/* ---------- وضع أفقي على الهواتف (landscape) ---------- */
+@media (max-height: 480px) and (orientation: landscape) {
+    .hero { min-height: 100vh; }
+    .hero .container { padding-top: 90px; padding-bottom: 30px; }
+    .hero-stats { margin-top: 26px; }
+    .hero-brand-art { opacity: .18; }
+    #preloader .pl-logo { width: 76px; }
+    #preloader .pl-name { font-size: 1.5rem; }
+}
+
+/* ---------- تفضيل تقليل الحركة ---------- */
 @media (prefers-reduced-motion: reduce) {
     .hero-brand-art img,
     .hero-art-halo,
